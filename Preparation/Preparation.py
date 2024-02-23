@@ -1,4 +1,4 @@
-# To be up-to-date on the most current version of this code. Check out our GitHub repository: https://github.com/Neatherblok/Facial_Emotion_Detec
+# To be up-to-date on the most current version of this code. Check out our GitHub repository: https://github.com/Neatherblok/SnowDetection
 
 # pip install datasets
 # pip install --upgrade --force-reinstall huggingface_hub
@@ -16,7 +16,7 @@ Creates a class object CustomDataLoader
 ************
 __init__
   This function initializes a CustomDataLoader object.
-  It loads a part of the ImageNet-1K dataset specified by the user.
+  It loads a part of the snow dataset specified by the user.
   Options for dataset_type are 'train' and 'test'.
 
   Args:
@@ -27,7 +27,7 @@ __init__
 ************
 __getitem__
   This function returns two variables containing each a variable present 
-  in the original ImageNet-1K dataset.
+  in the original snow dataset.
   Before returning these variables, it splits up and transforms the image 
   into a fixed resolution of 48 by 48 pixels.
   
