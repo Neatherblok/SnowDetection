@@ -41,18 +41,25 @@ __len__
 
 
 class CustomDataLoader:
-    def __init__(self, data_path, batch_size, dataset_type, mean, std):
+    def __init__(self, data_path, batch_size, dataset_type, mean=None, std=None):
         self.data_path = data_path
         self.batch_size = batch_size
         self.dataset_type = dataset_type
         self.mean = mean
         self.std = std
 
-        self.transform = transforms.Compose([
-            transforms.Resize(128),  # Resize to size 128x128,
-            transforms.ToTensor(),
-            transforms.Normalize(mean=self.mean, std=self.std)
-        ])
+        if mean is None or std is None:
+            self.transform = transforms.Compose([
+                transforms.Resize(128),  # Resize to size 128x128,
+                transforms.ToTensor()
+            ])
+
+        else: 
+            self.transform = transforms.Compose([
+                transforms.Resize(128),  # Resize to size 128x128,
+                transforms.ToTensor(),
+                transforms.Normalize(mean=self.mean, std=self.std)
+            ])
 
         self.dataset = torchvision.datasets.ImageFolder(root=f"{self.data_path}/{dataset_type}",
                                                         transform=self.transform)
