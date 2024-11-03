@@ -56,7 +56,10 @@ class CustomDataLoader:
 
         else: 
             self.transform = transforms.Compose([
-                transforms.Resize(128),  # Resize to size 128x128,
+                transforms.Resize(224),  # Resize to size 224 x 224,
+                transforms.RandomRotation(90),
+                transforms.RandomHorizontalFlip(),
+                transforms.RandomCrop(32, 4),
                 transforms.ToTensor(),
                 transforms.Normalize(mean=self.mean, std=self.std)
             ])
